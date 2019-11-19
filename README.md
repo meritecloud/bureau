@@ -76,3 +76,18 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Docker support instructions by tenerecodes
+
+clone this repository or the official laravel repository and copy Dockerfile and docker-compose.yml from here to /laravel directory.
+
+make sure you have set UID=1000 in the .env file
+
+cd into your laravel directory and run "docker build && docker-compose up -d && docker logs -f" the last one is optional
+
+if everythings looks ok, and you have your "laravel_app" and mysql containers runing do a "docker exec -it container_id -u devuser /bin/bash"
+
+Now in you should be in the work directory /var/www/html$ , run "composer install"
+
+thats all.
