@@ -82,12 +82,20 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 Clone this repository or the official laravel repository and copy Dockerfile, docker-compose.yml and .dockerignore files from here to /laravel directory.
 
-Make sure you have set UID=1000 in the .env file
+"Cp .env.example .env" or create a .env file
+
+Make sure you have set UID in the .env file to match the host user uid "UID=1000" 
+
+you can check your user id in linux by typing "id -u yourusername"
+
+if you need any other changes to your .env file help yourself
 
 Cd into your laravel directory and run "docker build && docker-compose up -d && docker logs -f" the last one is optional
 
 If everythings looks ok, and you have your "laravel_app" and mysql containers runing do a "docker exec -it container_id -u devuser /bin/bash"
 
 Now in you should be in the work directory /var/www/html$ , run "composer install"
+
+The app will ask you to generate a key for your app, do it
 
 That's all.
