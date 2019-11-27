@@ -29,7 +29,7 @@ services:
     volumes:
       - ./run/var:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=securerootpassword
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${DB_DATABASE}
       - MYSQL_USER=${DB_USERNAME}
       - MYSQL_PASSWORD=${DB_PASSWORD}
@@ -46,8 +46,12 @@ services:
     depends_on:
       - mysql-db
     environment:
-      - MYSQL_ROOT_PASSWORD=securerootpassword
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - PMA_HOST=mysql-db
+    networks:
+      backend:
+        aliases:
+          - php-myadmin
 
 networks:
   backend:
